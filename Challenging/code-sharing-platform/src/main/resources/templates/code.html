@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="./static/style.css">
+    <link rel="stylesheet"
+          href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/default.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div th:each="snippet: ${code}">
+    <div th:if="${snippet.views >= 0 || snippet.noViewsRestriction}">
+        <div th:if="${!snippet.noViewsRestriction}">
+            <div th:if="${snippet.views >= 0 && !snippet.noViewsRestriction && flag != 'on'}">
+                <span id="views_restriction" th:text="${snippet.views}"></span> more view allowed
+            </div>
+        </div>
+
+    </div>
+    <div th:if="${snippet.time >= 0 || snippet.noTimeRestriction}">
+        <div th:if="${!snippet.noTimeRestriction}">
+            <div th:if="${snippet.time >= 0 && !snippet.noTimeRestriction && flag != 'on'} ">
+                The code will be available for <span id="time_restriction" th:text="${snippet.time}"></span> seconds
+            </div>
+        </div>
+
+    </div>
+    <!--    Time Remain:<span id="time_restriction"> </span>-->
+    <!--    Views Remain:<span id="views_restriction"> View </span>-->
+    <span id="load_date" th:text="${snippet.date}"></span>
+    <pre id="code_snippet"><code th:text="${snippet.code}"></code></pre>
+
+</div>
+</body>
+</html>
