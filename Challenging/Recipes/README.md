@@ -1,3 +1,3 @@
-# This is Code Sharing Platform Project
+# This is Recipes Project
 # Level: Challenging
-# Technologies used: Spring Boot, Spring Data JPA, Thymeleaf, MySQL
+# Technologies used: Spring Boot, Spring Security, Spring Data JPA, , MySQL
